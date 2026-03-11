@@ -8,6 +8,9 @@ Real Sumeria email patterns (from actual samples):
   - "- 31,03 € à Remitly"
   - "+ 1,00 € de THEFORK - Paiement annulé"
   - "- 20,00 € à SumUp  *LCP MCS3ZCHS"
+  - "- 6.99 € à « Naturalia »"  (merchant in guillemets)
+  - "+ 0.66 € sur « Cash reserve »"  (internal transfer)
+  - "+ 10.00 € sur « Comida coloc »"  (shared account credit)
 
 Direction is determined by the sign prefix:
   - "-" = OUT (payment/withdrawal)
@@ -30,9 +33,12 @@ _SUMERIA_SENDERS = [
     "noreply@lydia-app.com",
 ]
 
-# Subject pattern: {+/-} {amount} € {à/de/au} {merchant}
+# Amount pattern: supports both comma decimal (10,00) and dot decimal (6.99)
+_AMOUNT = r"\d{1,3}(?:[\s.]\d{3})*[,.]\d{2}"
+
+# Subject pattern: {+/-} {amount} € {à/de/au/sur} {merchant or «account»}
 _SUBJECT_PATTERN = re.compile(
-    r"^([+-])\s*(\d{1,3}(?:[\s.]\d{3})*,\d{2})\s*€\s*(?:à|de|au)\s+(.+?)(?:\s*-\s*.+)?$"
+    rf"^([+-])\s*({_AMOUNT})\s*€\s*(?:à|de|au|sur)\s+(.+?)(?:\s*-\s*.+)?$"
 )
 
 
@@ -57,15 +63,26 @@ class SumeriaTemplate(BankEmailTemplate):
         match = _SUBJECT_PATTERN.match(subject.strip())
         if match:
             sign, raw_amount, merchant = match.groups()
+            # Normalize amount: handle both "10,00" and "6.99" formats
+            normalized = raw_amount.replace(" ", "")
+            if "," in normalized and "." in normalized:
+                # e.g. "1.000,50" → European format
+                normalized = normalized.replace(".", "").replace(",", ".")
+            elif "," in normalized:
+                normalized = normalized.replace(",", ".")
+            # else dot decimal like "6.99" stays as-is
             try:
-                amount = Decimal(raw_amount.replace(" ", "").replace(".", "").replace(",", "."))
+                amount = Decimal(normalized)
             except InvalidOperation:
                 return None
+
+            # Strip guillemets «» from merchant names
+            merchant = merchant.strip().strip("«»").strip()
 
             return TransactionData(
                 amount=amount,
                 currency="EUR",
-                merchant=merchant.strip(),
+                merchant=merchant,
                 date=date,
                 direction="IN" if sign == "+" else "OUT",
                 raw_description=subject,
