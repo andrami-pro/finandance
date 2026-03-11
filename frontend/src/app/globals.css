@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Finandance — Nova Emerald aligned to prototype (OKLCH) */
+    --background: 0.985 0.002 165;
+    --foreground: 0.15 0.015 165;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.015 165;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.015 165;
+
+    /* Primary: bright emerald ≈ #1dedb2 */
+    --primary: 0.87 0.18 165;
+    --primary-foreground: 0.15 0.015 165;
+
+    --secondary: 0.96 0.005 260;
+    --secondary-foreground: 0.25 0.01 260;
+
+    --muted: 0.96 0.005 165;
+    --muted-foreground: 0.58 0.04 170;
+
+    --accent: 0.96 0.005 165;
+    --accent-foreground: 0.22 0.01 165;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.92 0.005 260;
+    --input: 0.92 0.005 260;
+    --ring: 0.87 0.18 165;
+
+    /* Chart colors */
+    --chart-1: 0.87 0.18 165;
+    --chart-2: 0.77 0.15 163;
+    --chart-3: 0.7 0.15 162;
+    --chart-4: 0.6 0.13 163;
+    --chart-5: 0.51 0.1 166;
+
+    --radius: 0.45rem;
+
+    /* Sidebar */
+    --sidebar: 0.99 0.002 165;
+    --sidebar-foreground: 0.15 0.015 165;
+    --sidebar-primary: 0.87 0.18 165;
+    --sidebar-primary-foreground: 0.15 0.015 165;
+    --sidebar-accent: 0.96 0.005 165;
+    --sidebar-accent-foreground: 0.22 0.01 165;
+    --sidebar-border: 0.92 0.005 260;
+    --sidebar-ring: 0.87 0.18 165;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "finandance-monorepo",
+  "private": true,
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "lint-staged": {
+    "frontend/**/*.{ts,tsx,js,jsx}": [
+      "bash -c 'cd frontend && npx eslint --fix \"$@\"' --",
+      "bash -c 'cd frontend && npx prettier --write \"$@\"' --"
+    ],
+    "frontend/**/*.{css,json,md}": [
+      "bash -c 'cd frontend && npx prettier --write \"$@\"' --"
+    ],
+    "backend/**/*.py": [
+      "bash -c 'cd backend && uv run ruff check --fix \"$@\"' --",
+      "bash -c 'cd backend && uv run ruff format \"$@\"' --"
+    ]
+  }
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shared Projects - WealthCollaborate Nova Emerald</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dedb2", // Bright Emerald
+                        "primary-dark": "#15bd8d",
+                        "stone-bg": "#fcfcfc", // Very light stone
+                        "stone-border": "#e5e7eb", // Subtle gray border
+                        "text-main": "#111816",
+                        "text-muted": "#61897e",
+                        "background-light": "#ffffff",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ['"Geist Mono"', "monospace"],
+                        "body": ['"Geist Mono"', "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.45rem",
+                        "sm": "0.25rem",
+                        "md": "0.45rem",
+                        "lg": "0.6rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary selection:text-black">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-64 flex-shrink-0 border-r border-stone-border bg-stone-bg flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-sm">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-text-main">WealthCollaborate</h1>
+<span class="text-[10px] uppercase tracking-wider text-text-muted font-medium">Nova V3</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md bg-white border border-stone-border px-3 py-2.5 shadow-sm transition-all hover:border-emerald-200" href="#">
+<span class="material-symbols-outlined text-emerald-600">folder_shared</span>
+<span class="text-xs font-semibold text-text-main">Shared Projects</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">hub</span>
+<span class="text-xs font-medium">Integrations</span>
+<span class="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-100 px-1 text-[9px] font-bold text-emerald-700">3</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-md border border-emerald-100 bg-emerald-50/50 p-3">
+<div class="flex items-center gap-2 text-emerald-800 mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Security</span>
+</div>
+<p class="text-[10px] text-emerald-700/80 leading-relaxed">Your session is encrypted and 2FA secured.</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-stone-border">
+<div class="relative h-8 w-8 overflow-hidden rounded-full border border-stone-200">
+<img alt="User avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9eu7_rOpnWcHeiUKB9ODrPSOsIWv_FBMAxfbfPw-b1Z9QRAuE5fQ7Gs490JeQUpM4v6fSgwwkijiU0x-ia-GRE1idaTSxvWOITglJ-Gdi8gIVZLb-s5jwBgdYi7mDdWQijWm50qKpduWnBa8uWwEAXo6oLLsm-W8NJVAPJ2N-JzreaW9FFNKEC6C-J8fblvSd-rUwrwp9-JbHZkKPRVz70aUjaM02_JwHVtPDtj7imv-eLbVGd3id8UPg8Ig_YceVeGWoYq5NBQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Elena R.</span>
+<span class="text-[10px] text-text-muted">Pro Plan</span>
+</div>
+<button class="ml-auto text-text-muted hover:text-text-main">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light overflow-hidden">
+<header class="h-20 flex items-center justify-between px-8 border-b border-stone-border bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-2 text-xs font-medium">
+<a class="text-text-muted hover:text-text-main transition-colors" href="#">Dashboard</a>
+<span class="text-stone-300">/</span>
+<span class="text-text-main font-bold">Shared Projects</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-[18px] transition-colors group-focus-within:text-emerald-500">search</span>
+<input class="w-full rounded-md border border-stone-200 bg-stone-50 py-1.5 pl-9 pr-4 text-xs font-medium text-text-main placeholder-text-muted focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all" placeholder="Search projects..." type="text"/>
+</div>
+<button class="relative text-text-muted hover:text-text-main transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-text-main px-4 py-2 rounded-md font-bold text-xs transition-colors shadow-sm shadow-emerald-200">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Create Shared Project
+                    </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 bg-stone-50/30">
+<div class="mx-auto max-w-7xl">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-text-main mb-1">Active Projects</h2>
+<p class="text-xs text-text-muted">You have 6 active collaborative goals.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-1.5 rounded-md border border-stone-200 bg-white px-3 py-1.5 text-xs font-medium text-text-main hover:border-emerald-200 hover:text-emerald-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                                Filter
+                            </button>
+<button class="flex items-center gap-1.5 rounded-md border border-stone-200 bg-white px-3 py-1.5 text-xs font-medium text-text-main hover:border-emerald-200 hover:text-emerald-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">sort</span>
+                                Sort by: Recent
+                            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group flex flex-col rounded-md border border-stone-border bg-white p-6 shadow-sm hover:shadow-md transition-all hover:border-emerald-200">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-emerald-50 text-emerald-600">
+<span class="material-symbols-outlined">real_estate_agent</span>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">House Down Payment</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-xs text-text-muted">Target: €60,000</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">+2.4% this month</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-medium mb-2">
+<span class="font-mono text-text-main">€45,250</span>
+<span class="text-text-muted">75%</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-2 mb-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 75%"></div>
+</div>
+<div class="border-t border-stone-50 pt-3 flex items-center gap-3">
+<div class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Sources</div>
+<div class="flex gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="h-5 w-5 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-[8px]" title="Wise">W</div>
+<div class="h-5 w-5 rounded bg-[#5741d9] flex items-center justify-center text-white font-bold text-[8px]" title="Kraken">K</div>
+</div>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-md border border-stone-border bg-white p-6 shadow-sm hover:shadow-md transition-all hover:border-emerald-200">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-orange-50 text-orange-600">
+<span class="material-symbols-outlined">flight_takeoff</span>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">Japan Trip 2025</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-xs text-text-muted">Target: €8,500</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">+5.1% this month</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-medium mb-2">
+<span class="font-mono text-text-main">€3,240</span>
+<span class="text-text-muted">38%</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-2 mb-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 38%"></div>
+</div>
+<div class="border-t border-stone-50 pt-3 flex items-center gap-3">
+<div class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Sources</div>
+<div class="flex gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="h-5 w-5 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-[8px]" title="Wise">W</div>
+</div>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-md border border-stone-border bg-white p-6 shadow-sm hover:shadow-md transition-all hover:border-emerald-200">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-red-50 text-red-600">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+<div class="h-7 w-7 flex items-center justify-center rounded-full ring-2 ring-white bg-stone-100 text-[10px] font-bold text-text-muted">
+                                        +1
+                                    </div>
+</div>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">Emergency Fund</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-xs text-text-muted">Target: €15,000</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-stone-100 text-stone-600 font-bold">Stable</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-medium mb-2">
+<span class="font-mono text-text-main">€14,850</span>
+<span class="text-text-muted">99%</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-2 mb-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 99%"></div>
+</div>
+<div class="border-t border-stone-50 pt-3 flex items-center gap-3">
+<div class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Sources</div>
+<div class="flex gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="h-5 w-5 rounded bg-stone-800 flex items-center justify-center text-white font-bold text-[8px]" title="Ledger">L</div>
+<div class="h-5 w-5 rounded bg-[#0052cc] flex items-center justify-center text-white font-bold text-[8px]" title="Chase">C</div>
+</div>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-md border border-stone-border bg-white p-6 shadow-sm hover:shadow-md transition-all hover:border-emerald-200">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-purple-50 text-purple-600">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">Wedding Fund</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-xs text-text-muted">Target: €25,000</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">+12% this month</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-medium mb-2">
+<span class="font-mono text-text-main">€8,125</span>
+<span class="text-text-muted">32%</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-2 mb-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 32%"></div>
+</div>
+<div class="border-t border-stone-50 pt-3 flex items-center gap-3">
+<div class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Sources</div>
+<div class="flex gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="h-5 w-5 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-[8px]" title="Wise">W</div>
+<div class="h-5 w-5 rounded bg-stone-200 flex items-center justify-center text-stone-600 font-bold text-[8px]" title="Manual">M</div>
+</div>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-md border border-stone-border bg-white p-6 shadow-sm hover:shadow-md transition-all hover:border-emerald-200">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-blue-50 text-blue-600">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-7 w-7 rounded-full ring-2 ring-white bg-stone-200 overflow-hidden">
+<img alt="Member" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">Tesla Model Y</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-xs text-text-muted">Target: €52,000</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">+1.2% this month</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-medium mb-2">
+<span class="font-mono text-text-main">€12,450</span>
+<span class="text-text-muted">24%</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-2 mb-4 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 24%"></div>
+</div>
+<div class="border-t border-stone-50 pt-3 flex items-center gap-3">
+<div class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Sources</div>
+<div class="flex gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+<div class="h-5 w-5 rounded bg-[#5741d9] flex items-center justify-center text-white font-bold text-[8px]" title="Kraken">K</div>
+</div>
+</div>
+</div>
+</div>
+<button class="group flex flex-col items-center justify-center rounded-md border border-dashed border-stone-300 bg-stone-50/50 p-6 transition-all hover:border-emerald-400 hover:bg-emerald-50/20 hover:shadow-sm h-full min-h-[240px]">
+<div class="mb-4 rounded-full bg-white p-4 shadow-sm group-hover:bg-primary group-hover:text-text-main group-hover:shadow-emerald-200 transition-colors">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">add</span>
+</div>
+<h3 class="text-sm font-bold text-text-main mb-1">Create New Project</h3>
+<p class="text-xs text-text-muted text-center px-4">Start saving for a new goal together with your partner.</p>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

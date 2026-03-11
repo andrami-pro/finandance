@@ -1,0 +1,51 @@
+# ── Dependencies ──────────────────────────
+node_modules/
+.venv/
+venv/
+
+# ── Environment (NEVER commit secrets) ────
+.env
+.env.local
+.env.*.local
+
+# ── Private keys (NEVER commit) ──────────
+*.pem
+
+# ── Build outputs ─────────────────────────
+dist/
+build/
+.next/
+out/
+
+# ── Python ────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# ── Frontend test coverage ────────────────
+coverage/
+
+# ── OS / IDE ──────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# ── Logs ──────────────────────────────────
+*.log
+npm-debug.log*
+
+# ── Tool configs (keep local) ─────────────
+.kilocode/
+.claude/
+.gemini/
+
+# ── Git remnants ──────────────────────────
+.git_trash_*
+.git_old_*

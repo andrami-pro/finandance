@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WealthCollaborate Budget Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dedb2", // Bright Emerald
+                        "primary-dark": "#15bd8d",
+                        "stone-bg": "#fcfcfc", // Very light stone
+                        "stone-border": "#e5e7eb", // Subtle gray border
+                        "text-main": "#111816",
+                        "text-muted": "#61897e",
+                        "background-light": "#ffffff",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ['"Geist Mono"', "monospace"],
+                        "body": ['"Geist Mono"', "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.45rem",
+                        "sm": "0.25rem",
+                        "md": "0.45rem",
+                        "lg": "0.6rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary selection:text-black">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-64 flex-shrink-0 border-r border-stone-border bg-stone-bg flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-sm">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-text-main">WealthCollaborate</h1>
+<span class="text-[10px] uppercase tracking-wider text-text-muted font-medium">Nova V3</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">grid_view</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md bg-white border border-stone-border px-3 py-2.5 shadow-sm transition-all hover:border-emerald-200" href="#">
+<span class="material-symbols-outlined text-emerald-600">account_balance_wallet</span>
+<span class="text-xs font-semibold text-text-main">Budget</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">folder_shared</span>
+<span class="text-xs font-medium">Shared Projects</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">hub</span>
+<span class="text-xs font-medium">Integrations</span>
+<span class="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-100 px-1 text-[9px] font-bold text-emerald-700">3</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-md border border-emerald-100 bg-emerald-50/50 p-3">
+<div class="flex items-center gap-2 text-emerald-800 mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Security</span>
+</div>
+<p class="text-[10px] text-emerald-700/80 leading-relaxed">Your session is encrypted and 2FA secured.</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-stone-border">
+<div class="relative h-8 w-8 overflow-hidden rounded-full border border-stone-200">
+<img alt="User avatar" class="h-full w-full object-cover" data-alt="Close up portrait of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9eu7_rOpnWcHeiUKB9ODrPSOsIWv_FBMAxfbfPw-b1Z9QRAuE5fQ7Gs490JeQUpM4v6fSgwwkijiU0x-ia-GRE1idaTSxvWOITglJ-Gdi8gIVZLb-s5jwBgdYi7mDdWQijWm50qKpduWnBa8uWwEAXo6oLLsm-W8NJVAPJ2N-JzreaW9FFNKEC6C-J8fblvSd-rUwrwp9-JbHZkKPRVz70aUjaM02_JwHVtPDtj7imv-eLbVGd3id8UPg8Ig_YceVeGWoYq5NBQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Elena R.</span>
+<span class="text-[10px] text-text-muted">Pro Plan</span>
+</div>
+<button class="ml-auto text-text-muted hover:text-text-main">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light overflow-hidden">
+<header class="h-20 flex items-center justify-between px-8 border-b border-stone-border bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center w-1/3">
+<div class="relative w-full max-w-sm group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-[20px] transition-colors group-focus-within:text-emerald-500">search</span>
+<input class="w-full rounded-md border border-stone-200 bg-stone-50 py-2 pl-10 pr-4 text-xs font-medium text-text-main placeholder-text-muted focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all" placeholder="Search transactions, budgets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-text-muted hover:text-text-main transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+<div class="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-10">
+<img alt="Partner 1" class="h-full w-full object-cover" data-alt="Woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-0">
+<img alt="Partner 2" class="h-full w-full object-cover" data-alt="Man portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-text-main px-4 py-2 rounded-md font-bold text-xs transition-colors shadow-sm shadow-emerald-200">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Expense
+                    </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="mx-auto max-w-7xl">
+<div class="mb-8 flex items-end justify-between">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-text-main mb-1">Budget &amp; Spending</h2>
+<p class="text-xs text-text-muted">October Overview <span class="mx-2">•</span> <span class="font-mono text-emerald-600">Last synced 14m ago</span></p>
+</div>
+<div class="flex gap-2">
+<button class="rounded-md bg-text-main px-3 py-1.5 text-xs font-medium text-white shadow-sm">Monthly</button>
+<button class="rounded-md border border-stone-200 bg-white px-3 py-1.5 text-xs font-medium text-text-main hover:border-emerald-200 hover:text-emerald-700 transition-colors">Quarterly</button>
+<button class="rounded-md border border-stone-200 bg-white px-3 py-1.5 text-xs font-medium text-text-main hover:border-emerald-200 hover:text-emerald-700 transition-colors">Yearly</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-1">Monthly Budget</h3>
+<div class="text-2xl font-bold text-text-main tracking-tight font-mono">€4,500<span class="text-stone-300 text-lg">.00</span></div>
+</div>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                                    +5%
+                                </span>
+<span class="text-[10px] text-text-muted">vs last month</span>
+</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-1">Actual Spending</h3>
+<div class="text-2xl font-bold text-text-main tracking-tight font-mono">€3,120<span class="text-stone-300 text-lg">.50</span></div>
+</div>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-stone-50 text-stone-400">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[10px] font-medium text-text-muted">
+<span>69% of budget used</span>
+<span class="text-emerald-600">€1,379 left</span>
+</div>
+<div class="h-1.5 w-full rounded-full bg-stone-100 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 69%"></div>
+</div>
+</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-1">Savings Rate</h3>
+<div class="text-2xl font-bold text-text-main tracking-tight font-mono">31<span class="text-stone-300 text-lg">%</span></div>
+</div>
+<div class="h-10 flex items-end gap-1">
+<div class="w-2 bg-stone-200 rounded-sm h-[40%]"></div>
+<div class="w-2 bg-stone-200 rounded-sm h-[60%]"></div>
+<div class="w-2 bg-stone-200 rounded-sm h-[30%]"></div>
+<div class="w-2 bg-stone-200 rounded-sm h-[50%]"></div>
+<div class="w-2 bg-primary rounded-sm h-[80%]"></div>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-[10px] text-text-muted">Target: 30%</span>
+<span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-bold text-emerald-600">On Track</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+<div class="lg:col-span-2 rounded-md border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Budget vs Actual</h3>
+<div class="flex items-center gap-4 text-[10px]">
+<div class="flex items-center gap-1.5">
+<span class="h-0.5 w-3 border-t-2 border-dashed border-stone-300"></span>
+<span class="text-text-muted">Planned</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-text-main font-medium">Actual</span>
+</div>
+</div>
+</div>
+<div class="relative h-48 w-full">
+<div class="absolute inset-0 flex flex-col justify-between text-[9px] text-stone-300 font-mono">
+<div class="border-b border-stone-100 pb-1 w-full flex items-end"><span>5k</span></div>
+<div class="border-b border-stone-100 pb-1 w-full flex items-end"><span>3k</span></div>
+<div class="border-b border-stone-100 pb-1 w-full flex items-end"><span>1k</span></div>
+<div class="border-b border-stone-100 pb-1 w-full flex items-end"><span>0</span></div>
+</div>
+<div class="absolute inset-0 flex items-end justify-between px-6 pb-2 pt-4">
+<svg class="absolute bottom-6 left-6 right-6 top-4 h-[85%] w-[94%] overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0,80 Q25,70 50,40 T100,20" fill="none" stroke="#d1d5db" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M0,90 Q25,85 50,55 T100,60 L100,100 L0,100 Z" fill="url(#gradientEmerald)" opacity="0.15"></path>
+<path d="M0,90 Q25,85 50,55 T100,60" fill="none" stroke="#1dedb2" stroke-width="2.5"></path>
+<defs>
+<linearGradient id="gradientEmerald" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#1dedb2" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="flex justify-between px-6 text-[10px] text-text-muted font-mono mt-2">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+<div class="lg:col-span-1 rounded-md border border-stone-border bg-white p-6 shadow-sm flex flex-col">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-6">Zero-Based Budget</h3>
+<div class="flex-1 flex flex-col items-center justify-center">
+<div class="relative h-32 w-32 shrink-0 rounded-full mb-6" style="background: conic-gradient(#1dedb2 0% 35%, #15bd8d 35% 60%, #111816 60% 80%, #e5e7eb 80% 100%);">
+<div class="absolute inset-0 m-auto h-20 w-20 rounded-full bg-white flex flex-col items-center justify-center shadow-inner">
+<span class="text-[10px] text-text-muted uppercase">Remaining</span>
+<span class="text-sm font-bold text-text-main font-mono">€0.00</span>
+</div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-text-main">Housing &amp; Util</span>
+</div>
+<span class="font-mono text-text-muted">35%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-[#15bd8d]"></span>
+<span class="text-text-main">Food &amp; Dining</span>
+</div>
+<span class="font-mono text-text-muted">25%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-[#111816]"></span>
+<span class="text-text-main">Savings</span>
+</div>
+<span class="font-mono text-text-muted">20%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-stone-200"></span>
+<span class="text-text-main">Lifestyle</span>
+</div>
+<span class="font-mono text-text-muted">20%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rounded-md border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-emerald-600 text-[20px]">psychology</span>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Smart Insights</h3>
+</div>
+<div class="space-y-3">
+<div class="flex items-start gap-3 p-3 rounded-md bg-stone-50 border border-stone-100 hover:border-emerald-200 transition-colors cursor-pointer">
+<div class="mt-0.5 p-1.5 rounded bg-orange-100 text-orange-600">
+<span class="material-symbols-outlined text-[16px]">weekend</span>
+</div>
+<div class="flex-1">
+<h4 class="text-xs font-bold text-text-main">Weekend Spending Alert</h4>
+<p class="text-[10px] text-text-muted mt-0.5 leading-relaxed">Spending is 15% higher on Saturdays. Consider setting a specific weekend limit.</p>
+</div>
+<span class="material-symbols-outlined text-stone-300 text-[16px]">chevron_right</span>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-md bg-stone-50 border border-stone-100 hover:border-emerald-200 transition-colors cursor-pointer">
+<div class="mt-0.5 p-1.5 rounded bg-blue-100 text-blue-600">
+<span class="material-symbols-outlined text-[16px]">coffee</span>
+</div>
+<div class="flex-1">
+<h4 class="text-xs font-bold text-text-main">Coffee Habit</h4>
+<p class="text-[10px] text-text-muted mt-0.5 leading-relaxed">You've spent €45 on coffee this week. That's projected to be €180/month.</p>
+</div>
+<span class="material-symbols-outlined text-stone-300 text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[20px]">calendar_clock</span>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Upcoming Bills</h3>
+</div>
+<a class="text-[10px] font-bold text-emerald-600 hover:text-emerald-800" href="#">View Calendar</a>
+</div>
+<div class="space-y-0 divide-y divide-stone-100">
+<div class="flex items-center justify-between py-3 group hover:bg-stone-50 px-2 -mx-2 rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-[#1db954] flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">music_note</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Spotify Premium</span>
+<span class="text-[10px] text-text-muted">Due Tomorrow</span>
+</div>
+</div>
+<span class="font-mono text-xs font-bold text-text-main">€12.99</span>
+</div>
+<div class="flex items-center justify-between py-3 group hover:bg-stone-50 px-2 -mx-2 rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-yellow-400 flex items-center justify-center text-yellow-900">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Electricity</span>
+<span class="text-[10px] text-text-muted">Due Oct 15</span>
+</div>
+</div>
+<span class="font-mono text-xs font-bold text-text-main">€65.00</span>
+</div>
+<div class="flex items-center justify-between py-3 group hover:bg-stone-50 px-2 -mx-2 rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-purple-500 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Internet Provider</span>
+<span class="text-[10px] text-text-muted">Due Oct 18</span>
+</div>
+</div>
+<span class="font-mono text-xs font-bold text-text-main">€49.90</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

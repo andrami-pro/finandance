@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>House Down Payment Detailed View</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dedb2", // Bright Emerald
+                        "primary-dark": "#15bd8d",
+                        "stone-bg": "#fcfcfc", // Very light stone
+                        "stone-border": "#e5e7eb", // Subtle gray border
+                        "text-main": "#111816",
+                        "text-muted": "#61897e",
+                        "background-light": "#ffffff",
+                        "background-dark": "#10221d",
+                        "emerald-custom": "oklch(0.60 0.13 163)", // User specific token reference
+                    },
+                    fontFamily: {
+                        "display": ['"Geist Mono"', "monospace"],
+                        "body": ['"Geist Mono"', "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.45rem",
+                        "sm": "0.25rem",
+                        "md": "0.45rem",
+                        "lg": "0.6rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary selection:text-black">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-64 flex-shrink-0 border-r border-stone-border bg-stone-bg flex flex-col justify-between p-6 hidden md:flex">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-sm">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-text-main">WealthCollaborate</h1>
+<span class="text-[10px] uppercase tracking-wider text-text-muted font-medium">Nova V3</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md bg-white border border-stone-border px-3 py-2.5 shadow-sm transition-all hover:border-emerald-200" href="#">
+<span class="material-symbols-outlined text-emerald-600">folder_shared</span>
+<span class="text-xs font-semibold text-text-main">Shared Projects</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">hub</span>
+<span class="text-xs font-medium">Integrations</span>
+<span class="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-100 px-1 text-[9px] font-bold text-emerald-700">3</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-md border border-emerald-100 bg-emerald-50/50 p-3">
+<div class="flex items-center gap-2 text-emerald-800 mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Security</span>
+</div>
+<p class="text-[10px] text-emerald-700/80 leading-relaxed">Your session is encrypted and 2FA secured.</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-stone-border">
+<div class="relative h-8 w-8 overflow-hidden rounded-full border border-stone-200">
+<img alt="User avatar" class="h-full w-full object-cover" data-alt="Close up portrait of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9eu7_rOpnWcHeiUKB9ODrPSOsIWv_FBMAxfbfPw-b1Z9QRAuE5fQ7Gs490JeQUpM4v6fSgwwkijiU0x-ia-GRE1idaTSxvWOITglJ-Gdi8gIVZLb-s5jwBgdYi7mDdWQijWm50qKpduWnBa8uWwEAXo6oLLsm-W8NJVAPJ2N-JzreaW9FFNKEC6C-J8fblvSd-rUwrwp9-JbHZkKPRVz70aUjaM02_JwHVtPDtj7imv-eLbVGd3id8UPg8Ig_YceVeGWoYq5NBQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Elena R.</span>
+<span class="text-[10px] text-text-muted">Pro Plan</span>
+</div>
+<button class="ml-auto text-text-muted hover:text-text-main">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light overflow-hidden">
+<header class="h-20 flex items-center justify-between px-8 border-b border-stone-border bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-2 text-xs text-text-muted">
+<span class="hover:text-text-main cursor-pointer">Dashboard</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="hover:text-text-main cursor-pointer">Shared Projects</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="font-bold text-text-main">House Down Payment</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center bg-stone-100 p-0.5 rounded-md mr-2">
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">1M</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">3M</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm bg-white text-text-main shadow-sm border border-stone-200">YTD</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">1Y</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">ALL</button>
+</div>
+<div class="h-5 w-[1px] bg-stone-200"></div>
+<button class="relative text-text-muted hover:text-text-main transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+<div class="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-10">
+<img alt="Partner 1" class="h-full w-full object-cover" data-alt="Woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-0">
+<img alt="Partner 2" class="h-full w-full object-cover" data-alt="Man portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+<button class="flex items-center gap-2 border border-stone-200 hover:border-emerald-200 bg-white hover:bg-stone-50 text-text-main px-4 py-2 rounded-md font-medium text-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+                    Edit Project
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="mx-auto max-w-7xl flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="rounded-xl border border-stone-border bg-white p-6 shadow-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-emerald-50/50 -mr-6 -mt-6"></div>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-2">Total Project Balance</h3>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-bold text-text-main font-mono tracking-tight">€45,000</span>
+<span class="mb-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">75% Funded</span>
+</div>
+</div>
+<div class="rounded-xl border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Progress to Goal</h3>
+<span class="text-[10px] text-text-muted">Goal: €60,000</span>
+</div>
+<div class="flex items-end gap-3 mb-3">
+<span class="text-3xl font-bold text-text-main font-mono tracking-tight">€15,000</span>
+<span class="mb-1 text-xs font-medium text-stone-500">to go</span>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-1.5">
+<div class="bg-gradient-to-r from-emerald-400 to-emerald-600 h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="rounded-xl border border-stone-border bg-white p-6 shadow-sm">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-2">Total Growth / Yield</h3>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-bold text-emerald-600 font-mono tracking-tight">+€2,450</span>
+<span class="mb-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 5.8% APY
+                            </span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="col-span-1 lg:col-span-2 rounded-xl border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Project Balance History</h3>
+<div class="flex bg-stone-100 p-0.5 rounded-md">
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm bg-white text-text-main shadow-sm border border-stone-200">1M</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">3M</button>
+<button class="px-3 py-1 text-[10px] font-medium rounded-sm text-text-muted hover:text-text-main hover:bg-white/50 transition-colors">YTD</button>
+</div>
+</div>
+<div class="h-64 w-full relative">
+<div class="absolute inset-0 flex flex-col justify-between text-[10px] text-stone-400 font-mono pb-6">
+<div class="w-full border-b border-stone-100 border-dashed flex items-end"><span>€50k</span></div>
+<div class="w-full border-b border-stone-100 border-dashed flex items-end"><span>€40k</span></div>
+<div class="w-full border-b border-stone-100 border-dashed flex items-end"><span>€30k</span></div>
+<div class="w-full border-b border-stone-100 border-dashed flex items-end"><span>€20k</span></div>
+<div class="w-full border-b border-stone-100 border-dashed flex items-end"><span>€10k</span></div>
+</div>
+<svg class="absolute inset-0 w-full h-[calc(100%-24px)] overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+<defs>
+<linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1dedb2" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#1dedb2" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,80 C10,75 20,70 30,65 C40,68 50,55 60,45 C70,40 80,35 90,25 L100,15 L100,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 C10,75 20,70 30,65 C40,68 50,55 60,45 C70,40 80,35 90,25 L100,15" fill="none" stroke="#10b981" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<circle cx="100" cy="15" fill="#ffffff" r="3" stroke="#10b981" stroke-width="2"></circle>
+</svg>
+<div class="absolute bottom-0 w-full flex justify-between text-[10px] text-stone-400 font-mono pt-2">
+<span>Jan 1</span>
+<span>Jan 8</span>
+<span>Jan 15</span>
+<span>Jan 22</span>
+<span>Jan 29</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-1 rounded-xl border border-stone-border bg-white p-6 shadow-sm flex flex-col">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Project Asset Allocation</h3>
+<div class="flex-1 flex flex-col items-center justify-center relative">
+<div class="relative h-48 w-48">
+<svg class="h-full w-full -rotate-90 transform" viewBox="0 0 100 100">
+<circle class="text-emerald-500" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="140 251.2" stroke-width="12"></circle>
+<circle class="text-teal-300" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="75 251.2" stroke-dashoffset="-140" stroke-width="12"></circle>
+<circle class="text-stone-300" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="36.2 251.2" stroke-dashoffset="-215" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-xs font-medium text-text-muted">Total</span>
+<span class="text-lg font-bold text-text-main font-mono">3 Assets</span>
+</div>
+</div>
+</div>
+<div class="mt-4 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-text-main">Fiat (Wise Jars)</span>
+</div>
+<span class="font-mono text-text-muted">55%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-teal-300"></span>
+<span class="text-text-main">Crypto (Kraken)</span>
+</div>
+<span class="font-mono text-text-muted">30%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-stone-300"></span>
+<span class="text-text-main">Cold Storage (Ledger)</span>
+</div>
+<span class="font-mono text-text-muted">15%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="col-span-1 lg:col-span-2 rounded-xl border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Connected Funding Sources</h3>
+<button class="flex items-center gap-1 text-[10px] font-bold text-white bg-text-main hover:bg-black px-3 py-1.5 rounded transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[14px]">add</span> Link Account
+                            </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="text-[10px] uppercase text-text-muted font-medium border-b border-stone-100 bg-stone-50/50">
+<tr>
+<th class="py-2 pl-2 font-medium">Source Name</th>
+<th class="py-2 font-medium">Asset Type</th>
+<th class="py-2 font-medium">Owner</th>
+<th class="py-2 font-medium text-right">Current Balance</th>
+<th class="py-2 pr-2 font-medium text-right">% of Project</th>
+</tr>
+</thead>
+<tbody class="text-xs">
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">W</div>
+<span class="font-bold text-text-main">Maria's Wise Jar</span>
+</div>
+</td>
+<td class="py-3 text-text-muted">Fiat (EUR)</td>
+<td class="py-3">
+<div class="h-6 w-6 rounded-full overflow-hidden bg-stone-200">
+<img alt="Maria" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+</td>
+<td class="py-3 text-right font-mono font-bold text-text-main">€24,750</td>
+<td class="py-3 pr-2 text-right font-mono text-emerald-600">55%</td>
+</tr>
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-bold">K</div>
+<span class="font-bold text-text-main">Alex's Kraken BTC</span>
+</div>
+</td>
+<td class="py-3 text-text-muted">Crypto (BTC)</td>
+<td class="py-3">
+<div class="h-6 w-6 rounded-full overflow-hidden bg-stone-200">
+<img alt="Alex" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</td>
+<td class="py-3 text-right font-mono font-bold text-text-main">€13,500</td>
+<td class="py-3 pr-2 text-right font-mono text-emerald-600">30%</td>
+</tr>
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded bg-stone-200 text-stone-700 flex items-center justify-center text-[10px] font-bold">L</div>
+<span class="font-bold text-text-main">Ledger Nano X</span>
+</div>
+</td>
+<td class="py-3 text-text-muted">Cold Storage (ETH)</td>
+<td class="py-3">
+<div class="flex -space-x-2">
+<div class="h-6 w-6 rounded-full overflow-hidden ring-1 ring-white bg-stone-200">
+<img alt="Maria" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-6 w-6 rounded-full overflow-hidden ring-1 ring-white bg-stone-200">
+<img alt="Alex" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+</td>
+<td class="py-3 text-right font-mono font-bold text-text-main">€6,750</td>
+<td class="py-3 pr-2 text-right font-mono text-emerald-600">15%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-1 rounded-xl border border-stone-border bg-white p-6 shadow-sm">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Recent Project Activity</h3>
+<div class="flow-root">
+<ul class="-mb-8" role="list">
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-stone-200"></span>
+<div class="relative flex space-x-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 ring-4 ring-white border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">arrow_downward</span>
+</div>
+<div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+<div>
+<p class="text-xs text-text-main font-medium">Deposit to Wise Jar</p>
+<p class="text-[10px] text-text-muted">Maria added €500</p>
+</div>
+<div class="whitespace-nowrap text-right text-[10px] text-text-muted">2h ago</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-stone-200"></span>
+<div class="relative flex space-x-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-stone-50 ring-4 ring-white border border-stone-200">
+<span class="material-symbols-outlined text-stone-500 text-[16px]">trending_up</span>
+</div>
+<div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+<div>
+<p class="text-xs text-text-main font-medium">Kraken BTC Appreciation</p>
+<p class="text-[10px] text-emerald-600">+€120 value change</p>
+</div>
+<div class="whitespace-nowrap text-right text-[10px] text-text-muted">5h ago</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<div class="relative pb-8">
+<div class="relative flex space-x-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-50 ring-4 ring-white border border-purple-100">
+<span class="material-symbols-outlined text-purple-500 text-[16px]">link</span>
+</div>
+<div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+<div>
+<p class="text-xs text-text-main font-medium">Ledger Account Linked</p>
+<p class="text-[10px] text-text-muted">Cold storage synced</p>
+</div>
+<div class="whitespace-nowrap text-right text-[10px] text-text-muted">1d ago</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

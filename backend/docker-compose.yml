@@ -1,0 +1,26 @@
+services:
+  finandance-backend:
+    build: .
+    container_name: finandance-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=production
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    # Connect to the same network as n8n for internal communication
+    networks:
+      - default
+
+# If your n8n is on a specific external network, uncomment and adjust:
+# networks:
+#   default:
+#     external: true
+#     name: n8n_network  # replace with your actual Docker network name

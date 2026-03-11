@@ -1,0 +1,767 @@
+Delivered-To: brianrsco@gmail.com
+Received: by 2002:a05:6124:24a6:b0:435:ceb1:1ff8 with SMTP id h38csp1773650vlr;
+        Tue, 10 Mar 2026 05:06:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b17:b0:483:64b4:79da with SMTP id 5b1f17b1804b1-4852695d236mr240267605e9.26.1773144374684;
+        Tue, 10 Mar 2026 05:06:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773144374; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dvdcpPRrKzdmuaq4hhZh/wtlmdC8CgW96NAfauvK7Xu9sHmQp4u6XhQXdR0F/4Zl0B
+         EIjcHMVHLYUVj0th+3KzzbSPd91LhOY1ZplTiJUs8G6hOwnUGurjwipvN9W4Ufuyn9Dg
+         d0IVnbn407kAMONYZZkqAdWc+WGMYEOceTzZHyNiqqkRpNIVh5mLcTJSdNNgpCQQcg5R
+         Wdpxsy3yrZIwzOVg10asgB2oaXADfs0OnerVsC9wnJDLvLQBtJtSE8C+WLrpkAd4Ggsp
+         g/61Yu9aEsq8/laebXL3r4GjK9NQYWQE5DkACyr287vs6Y8BtgMH8h7hdRO+3wo1wiLI
+         s1rQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:reply-to:to:from:subject:mime-version:date
+         :dkim-signature:dkim-signature;
+        bh=9bDXOMgahRst1o6X24d6a8Y1L8r8T/b5Kz9/Xjr8V9M=;
+        fh=hGVJ5vwVFqXjY8+71ph2tyoQHAUo6BVskHpPomF0l+c=;
+        b=N+G8k2etdWPTUNEVI7QTnom9bP3qqJw1u/FgmePigqgLPKI1/NJPyo3qVwh8PI8pz/
+         JxGRLd88i0yNzkTk51viH6e0u0pmDNlyeJTmdfDiDOUu6FpxKGA93o/4+alnQn/M6Oks
+         jwU9eD+SUK85A0lpvylkzn4mpSIxZHVAw4Vt6O5vJZEuolysg2D4f8UeP1iByZGU3dGJ
+         paLJO1yItMwsyg4/6+00m1f1WIP2sQO5Iic/Of/BKij29MkApc54oMI4juVd/iOE0941
+         sUDeDloxwU2jdXmZJP8RWuMRE1OW0PbmiucHGHAzSdUTxSBhdDqtdf9MqAuv51R/fgDO
+         2sfw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cioeu124264.info.sumeria.eu header.s=mta header.b=b6M8EZ3f;
+       dkim=pass header.i=@eu.mailgun.org header.s=krs2 header.b=pTdhu6ZT;
+       spf=pass (google.com: domain of postmaster@cioeu124264.info.sumeria.eu designates 143.55.239.106 as permitted sender) smtp.mailfrom=postmaster@cioeu124264.info.sumeria.eu;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=info.sumeria.eu
+Return-Path: <postmaster@cioeu124264.info.sumeria.eu>
+Received: from v5106.v5a39be5d.euw1.send.eu.mailgun.net (v5106.v5a39be5d.euw1.send.eu.mailgun.net. [143.55.239.106])
+        by mx.google.com with UTF8SMTPS id 5b1f17b1804b1-48541a75a32si50920315e9.3.2026.03.10.05.06.14
+        for <brianrsco@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2026 05:06:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of postmaster@cioeu124264.info.sumeria.eu designates 143.55.239.106 as permitted sender) client-ip=143.55.239.106;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cioeu124264.info.sumeria.eu header.s=mta header.b=b6M8EZ3f;
+       dkim=pass header.i=@eu.mailgun.org header.s=krs2 header.b=pTdhu6ZT;
+       spf=pass (google.com: domain of postmaster@cioeu124264.info.sumeria.eu designates 143.55.239.106 as permitted sender) smtp.mailfrom=postmaster@cioeu124264.info.sumeria.eu;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=info.sumeria.eu
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=cioeu124264.info.sumeria.eu; q=dns/txt; s=mta; t=1773144374; x=1773151574;
+ h=Message-Id: Reply-To: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=9bDXOMgahRst1o6X24d6a8Y1L8r8T/b5Kz9/Xjr8V9M=;
+ b=b6M8EZ3fHOnDhIhy3l4GdsUfaJXlU3JNZrPZM6h6ct4XilL7GOr2sJLhNga5RlBfBut8PJl3FW7FY9U7Q6ISKqaPCl72NpM1pKw3zD2wTct2f4N7OZxZLVGAaMrG/aHurrjk1rveYA45tLlyJBZnUFNWqfrltGZh7L7pUTGSpNU=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=eu.mailgun.org; q=dns/txt; s=krs2; t=1773144374; x=1773151574;
+ h=Message-Id: Reply-To: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=9bDXOMgahRst1o6X24d6a8Y1L8r8T/b5Kz9/Xjr8V9M=;
+ b=pTdhu6ZTPOFHe1P9IHin21t9RahlaJzZHQwtTYls8v9R4rlQtrJrCqDh+SeWpi3DmLfeg3NoOMhnst4WjHuZUtFxNvpbkEo8NlqBXv+WPB1fMKF51akxaRRMC54JTf7w4TzXZF4ZWCLsf6Oy8H23k+fhaE1J54NRBRfQnddTA+Q=
+X-Mailgun-Sid: WyJiMTUwNiIsImJyaWFucnNjb0BnbWFpbC5jb20iLCIzOTJmNyJd
+X-Feedback-Id: postmaster@cioeu124264.info.sumeria.eu::68d3eb76e6925da2cc852351:mailgun
+Received: by 279b590c9d9ad9efa53198c6aa2548a024bbb46ddbb5374aac25caf48ddef6a0 with HTTP
+ id 69b009356842c2d0d4a59836; Tue, 10 Mar 2026 12:06:13 GMT
+X-Mailgun-Sending-Ip: 143.55.239.106
+Date: Tue, 10 Mar 2026 12:06:13 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="d362a4f01c19f0007c5b014e8927391d79ea323f053f5f0b4bf2fbc9c9af"
+Subject: =?UTF-8?q?-_20,00_=E2=82=AC_=C3=A0_SumUp__*LCP_MCS3ZCHS?=
+From: Sumeria <support@info.sumeria.eu>
+To: brianrsco@gmail.com
+X-Mailgun-Track-Opens: false
+X-Mailgun-Dkim: true
+X-Mailgun-Native-Send: true
+X-Mailgun-Track-Clicks: false
+X-Mailer: Customer.io (dgSxhQwBAKbexQOl3sUDAZzXo_lcGZgXxy_N3XrVcw==;
+ +https://whatis.customeriomail.com)
+X-Report-Abuse-To: badactor@customer.io
+Reply-To: Contact Sumeria <contact@sumeria.eu>
+X-Mailgun-Variables: {"email_id": "dgSxhQwBAKbexQOl3sUDAZzXo_lcGZgXxy_N3XrVcw=="}
+Message-Id: <20260310120613.60421c519c94f39d@cioeu124264.info.sumeria.eu>
+
+--d362a4f01c19f0007c5b014e8927391d79ea323f053f5f0b4bf2fbc9c9af
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+La somme a =C3=A9t=C3=A9 pr=C3=A9lev=C3=A9e sur votre compte =C2=AB Budget =
+mensuel  =C2=BB
+
+La somme a =C3=A9t=C3=A9 pr=C3=A9lev=C3=A9e sur votre compte =C2=AB Budget =
+mensuel =C2=BB =C2=A0
+
+=C2=A0
+
+Sumeria app
+
+---------------------------------------------------
+Vous avez r=C3=A9gl=C3=A9 20,00 =E2=82=AC =C3=A0 SumUp *LCP MCS3ZCHS
+---------------------------------------------------
+
+avec la carte =C2=AB A. RAMIREZ =C2=BB
+
+La somme a =C3=A9t=C3=A9 pr=C3=A9lev=C3=A9e sur votre compte =C2=AB Budget =
+mensuel =C2=BB.
+
+Vous pouvez consulter l'historique ici ( https://go.sumeria.eu/accountdetai=
+ls?id=3D26783439 ).
+
+Sumeria
+
+Pourquoi je re=C3=A7ois cet email ?
+
+Une alerte =C2=AB D=C3=A9penses sup=C3=A9rieures =C3=A0 =C2=BB est activ=C3=
+=A9e sur votre compte =C2=AB Budget mensuel =C2=BB.
+
+Cliquez ici depuis votre smartphone ( https://go.sumeria.eu/accountdetails?=
+id=3D26783439 ), ou rendez-vous dans ce compte, pour d=C3=A9sactiver ou mod=
+ifier cette alerte.
+
+Cliquez ici ( https://support.sumeria.eu/l/fr/article/sadobk19e5-configurer=
+-une-alerte-sur-le-compte ) pour en savoir plus sur les alertes.
+
+=C2=A0
+
+=C2=A0
+
+=C2=A0
+
+Une question ? Un probl=C3=A8me ?
+
+La r=C3=A9ponse se trouve s=C3=BBrement dans notre manuel d'utilisation ( h=
+ttps://support.sumeria.eu/l/fr ).
+
+Vous recevez cet email suite =C3=A0 une action li=C3=A9e aux services de pa=
+iement de l'application Sumeria (une marque de Lydia Solutions). Cet email =
+n'est pas envoy=C3=A9 dans un but commercial. C'est la raison pour laquelle=
+ il ne contient pas de lien pour se d=C3=A9sabonner. Vous recevez cet email=
+ parce que vous avez un compte ouvert dans les livres de Lydia Solutions, m=
+=C3=AAme si vous =C3=AAtes d=C3=A9sabonn=C3=A9 des emails commerciaux.
+
+Le nom de domaine sumeria.eu appartient =C3=A0 Lydia Solutions, y compris l=
+es adresses email avec le suffixe =C2=AB @sumeria.eu =C2=BB.
+
+LYDIA SOLUTIONS est agr=C3=A9=C3=A9e et supervis=C3=A9e par l'Autorit=C3=A9=
+ de Contr=C3=B4le Prudentiel et de R=C3=A9solution (=C2=AB ACPR =C2=BB) en =
+tant qu'=C3=A9tablissement de monnaie =C3=A9lectronique habilit=C3=A9 =C3=
+=A0 d=C3=A9livrer des services de paiements. Code banque (CIB) : 17598. Age=
+nt prestataire de services de paiement de TINK (FI id 44059). Immatricul=C3=
+=A9e aupr=C3=A8s de l'ORIAS sous le n=C2=B018007465.
+
+LYDIA SOLUTIONS, SAS au capital de 1.794.792=C2=A0=E2=82=AC - RCS Paris 534=
+ 479 589 - TVA FR 67 534 479 589 - 14 avenue de l'Op=C3=A9ra, 75001 Paris.
+--d362a4f01c19f0007c5b014e8927391d79ea323f053f5f0b4bf2fbc9c9af
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html><html lang=3D"fr"><head>
+  <!--[if gte mso 9]>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+<title>Email Sumeria</title>
+<meta http-equiv=3D"Content-type" content=3D"text/html; charset=3Dutf-8"/>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+/>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"/>
+<meta name=3D"format-detection" content=3D"date=3Dno"/>
+<meta name=3D"format-detection" content=3D"address=3Dno"/>
+<meta name=3D"format-detection" content=3D"telephone=3Dno"/>
+<meta name=3D"x-apple-disable-message-reformatting"/>
+<meta name=3D"color-scheme" content=3D"light"/>
+<meta name=3D"supported-color-schemes" content=3D"light"/>
+
+<!--[if !mso]><!-->
+<link rel=3D"preconnect" href=3D"https://fonts.gstatic.com"/>
+<link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:wght@300;40=
+0;500;700;900&amp;display=3Dswap" rel=3D"stylesheet"/>
+<!--<![endif]-->
+
+<!--[if gte mso 9]>
+<style type=3D"text/css" media=3D"all">
+  sup { font-size: 100% !important; }
+</style>
+<![endif]-->
+
+<style type=3D"text/css" media=3D"screen">
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/98e3f6/000000000000000077359562/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Dn7&v=3D3") format("woff2"),url("https://use.typekit.net/af/98e3f6/000=
+000000000000077359562/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Dn7&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/98e3f6/000000000000000077359562/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Dn7&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/624cab/000000000000000077359558/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Di7&v=3D3") format("woff2"),url("https://use.typekit.net/af/624cab/000=
+000000000000077359558/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Di7&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/624cab/000000000000000077359558/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Di7&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 700;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/e4b1a9/000000000000000077359571/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Dn6&v=3D3") format("woff2"),url("https://use.typekit.net/af/e4b1a9/000=
+000000000000077359571/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Dn6&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/e4b1a9/000000000000000077359571/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Dn6&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/eb4c83/000000000000000077359574/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Di6&v=3D3") format("woff2"),url("https://use.typekit.net/af/eb4c83/000=
+000000000000077359574/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Di6&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/eb4c83/000000000000000077359574/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Di6&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 600;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/d45b9a/000000000000000077359577/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Dn4&v=3D3") format("woff2"),url("https://use.typekit.net/af/d45b9a/000=
+000000000000077359577/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Dn4&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/d45b9a/000000000000000077359577/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Dn4&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/6cc429/00000000000000007735957a/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Di4&v=3D3") format("woff2"),url("https://use.typekit.net/af/6cc429/000=
+00000000000007735957a/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Di4&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/6cc429/00000000000000007735957a/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Di4&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/56b0cd/00000000000000007735957d/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Dn3&v=3D3") format("woff2"),url("https://use.typekit.net/af/56b0cd/000=
+00000000000007735957d/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Dn3&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/56b0cd/00000000000000007735957d/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Dn3&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 300;
+  mso-font-alt: Arial;}
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/fcae55/000000000000000077359580/30/l=
+?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&=
+fvd=3Di3&v=3D3") format("woff2"),url("https://use.typekit.net/af/fcae55/000=
+000000000000077359580/30/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc=
+383831fe2ea177f62257a9191&fvd=3Di3&v=3D3") format("woff"),url("https://use.=
+typekit.net/af/fcae55/000000000000000077359580/30/a?primer=3D7cdcb44be4a7db=
+8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Di3&v=3D3") format(=
+"opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 300;
+  mso-font-alt: Arial;}
+a.skip-main:focus,
+a.skip-main:active {
+  color: #ffffff;
+  background-color: #ffffff;
+  left: auto;
+  top: auto;
+  width: 30%;
+  height: auto;
+  overflow: auto;
+  margin: 10px 35%;
+  padding: 5px;
+  border-radius: 15px;
+  border: 4px solid yellow;
+  text-align: center;
+  font-size: 12em;
+  z-index: 999;
+}
+=2Elink {
+  text-decoration: none;
+}
+@media only screen and (max-device-width: 480px), only screen and (max-widt=
+h: 480px) {
+  .mpx-40 {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  .mpx-32 {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  .mpt-32 {
+    padding-top: 32px !important;
+  }
+
+  .mpb-36 {
+    padding-bottom: 36px !important;
+  }
+
+  .mpb-28 {
+    padding-bottom: 28px !important;
+  }
+
+  .mpb-25 {
+    padding-bottom: 25px !important;
+  }
+
+  .mpb-24 {
+    padding-bottom: 24px !important;
+  }
+
+  .mpb-8 {
+    padding-bottom: 8px !important;
+  }
+
+  .mpl-0 {
+    padding-left: 0px !important;
+  }
+
+  .td,
+=2Em-shell {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .mt-left {
+    text-align: left !important;
+  }
+
+  .mt-center {
+    text-align: center !important;
+  }
+
+  .mt-right {
+    text-align: right !important;
+  }
+
+  .me-left {
+    margin-right: auto !important;
+  }
+
+  .me-center {
+    margin: 0 auto !important;
+  }
+
+  .me-right {
+    margin-left: auto !important;
+  }
+
+  .mh-auto {
+    height: auto !important;
+  }
+
+  .mw-auto {
+    width: auto !important;
+  }
+
+  .fluid-img img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .column,
+=2Ecolumn-top,
+=2Ecolumn-dir,
+=2Ecolumn-dir-top {
+    float: left !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .m-hide {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .m-block {
+    display: block !important;
+  }
+
+  .mw-15 {
+    width: 15px !important;
+  }
+
+  .mw-2p {
+    width: 2% !important;
+  }
+
+  .mw-32p {
+    width: 32% !important;
+  }
+
+  .mw-49p {
+    width: 49% !important;
+  }
+
+  .mw-50p {
+    width: 50% !important;
+  }
+
+  .mw-100p {
+    width: 100% !important;
+  }
+
+  .mw-240 {
+    width: 240px !important;
+  }
+}
+</style>
+</head>
+<body style=3D"-webkit-text-size-adjust: none; color: #0F2322; background: =
+#F1F4F4; padding: 0 !important; margin: 0 auto !important; display: block !=
+important; min-width: 100% !important; width: 100% !important; font-family:=
+ 'proxima-nova', Helvetica, Arial, sans-serif !important;"><div style=3D"di=
+splay: none">La somme a =C3=A9t=C3=A9 pr=C3=A9lev=C3=A9e sur votre compte =
+=C2=AB Budget mensuel  =C2=BB =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD=C2=A0</div>
+  <center>
+    <table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D=
+"0" cellpadding=3D"0" bgcolor=3D"#F1F4F4">
+      <tbody><tr>
+        <td align=3D"center" style=3D"color: #0F2322; font-family: 'proxima=
+-nova', Helvetica, Arial, sans-serif !important;">
+          <!-- Conteneur principal -->
+          <table role=3D"presentation" width=3D"600" border=3D"0" cellspaci=
+ng=3D"0" cellpadding=3D"0" class=3D"m-shell" style=3D"width:600px; max-widt=
+h:600px;">
+            <tbody><tr>
+              <td style=3D"color: #0F2322; font-family: 'proxima-nova', Hel=
+vetica, Arial, sans-serif !important;">
+
+                <!-- Spacing -->
+                <table role=3D"presentation" width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+                  <tbody><tr><td style=3D"color: #0F2322; height: 54px; lin=
+e-height: 54px; font-size: 0; font-family: 'proxima-nova', Helvetica, Arial=
+, sans-serif !important;" height=3D"54">=C2=A0</td></tr>
+                </tbody></table>
+
+                <!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D CONTENU SP=C3=89CIFIQUE=
+ =C3=80 L'EMAIL =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D -->
+                <table role=3D"presentation" width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+                  <tbody><tr>
+                    <td class=3D"mpx-40 text-16 lh-24 c-dblue" style=3D"fon=
+t-size: 16px; color: #0F2322; text-align: left; line-height: 24px; padding:=
+ 0 48px; font-family: 'proxima-nova', Helvetica, Arial, sans-serif !importa=
+nt; min-width: auto !important;" align=3D"left">
+                     =20
+
+<!-- Image + Title + Text + Button centered -->
+<table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0" style=3D"margin-bottom: 18px;">
+  <tbody><tr>
+    <td style=3D"color: #0F2322; text-align: center; padding-bottom: 28px; =
+font-family: 'proxima-nova', Helvetica, Arial, sans-serif !important;" alig=
+n=3D"center">
+      <img src=3D"https://userimg-assets-eu.customeriomail.com/images/clien=
+t-env-197297/1768410547083_logo-sumeria-app-V15_01KEYQQ11D645NNR36M1SS5R90.=
+png" width=3D"48" height=3D"48" border=3D"0" alt=3D"Sumeria app" class=3D"i=
+mg" style=3D"-ms-interpolation-mode: bicubic; font-size: 0pt; line-height: =
+0pt; text-align: left; display: inline-block; margin: 0;"/>
+    </td>
+  </tr>
+  <tr>
+    <td style=3D"color: #0F2322; font-family: 'proxima-nova', Helvetica, Ar=
+ial, sans-serif !important;">
+      <h2 class=3D"text-24 lh-28 fw-b c-black" style=3D"mso-line-height-rul=
+e: exactly; font-size: 24px; color: #0F2322; font-weight: bold; font-family=
+: 'proxima-nova', Arial, sans-serif; line-height: 28px; margin: 0 0 12px 0;=
+ padding: 0; text-align: center; min-width: auto !important;">Vous avez r=
+=C3=A9gl=C3=A9 20,00 =E2=82=AC =C3=A0 SumUp  *LCP MCS3ZCHS</h2>
+    </td>
+  </tr>
+  <tr>
+    <td class=3D"text-16 lh-24 c-dblue" style=3D"font-size: 16px; color: #0=
+F2322; line-height: 24px; text-align: center; padding-bottom: 32px; font-fa=
+mily: 'proxima-nova', Helvetica, Arial, sans-serif !important; min-width: a=
+uto !important;" align=3D"center">
+      avec la carte =C2=AB A. RAMIREZ  =C2=BB
+      <br/><br/>
+      La somme a =C3=A9t=C3=A9 pr=C3=A9lev=C3=A9e sur votre compte =C2=AB B=
+udget mensuel  =C2=BB.
+      <br/>
+      Vous pouvez <a href=3D"https://click.sumeria.eu/e/c/eyJlbWFpbF9pZCI6I=
+mRnU3hoUXdCQUtiZXhRT2wzc1VEQVp6WG9fbGNHWmdYeHlfTjNYclZjdz09IiwiaHJlZiI6Imh0=
+dHBzOi8vZ28uc3VtZXJpYS5ldS9hY2NvdW50ZGV0YWlscz9pZD0yNjc4MzQzOSIsImludGVybmF=
+sIjoiYjE4NTBjZjcwMWQ1YmIwMWE2ZGVjNTAzIiwibGlua19pZCI6NDB9/ca2fb47787f0fe898=
+39b2688b0f4a299336fa443e4b7dc29c86da05ccc144a23" target=3D"_blank" class=3D=
+"c-blue link" style=3D"color: #085E5E; text-decoration: none; font-family: =
+'proxima-nova', Helvetica, Arial, sans-serif !important;">consulter l'histo=
+rique ici</a>.
+    </td>
+  </tr>
+</tbody></table>
+
+
+
+<!-- Signature -->
+<table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0" style=3D"margin-bottom: 28px;">
+  <tbody><tr>
+    <td class=3D"text-16 lh-24 c-dblue lts-01" style=3D"font-size: 16px; co=
+lor: #0F2322; text-align: left; line-height: 24px; letter-spacing: -0.1px; =
+font-family: 'proxima-nova', Helvetica, Arial, sans-serif !important; min-w=
+idth: auto !important;" align=3D"left">
+      <p class=3D"text-16 lh-24 c-dblue lts-01" style=3D"mso-line-height-ru=
+le: exactly; Margin: 0; font-size: 16px; color: #0F2322; text-align: left; =
+line-height: 24px; letter-spacing: -0.1px; font-family: 'proxima-nova', Hel=
+vetica, Arial, sans-serif !important; min-width: auto !important; padding: =
+0 !important; margin: 0 !important;">
+        Sumeria
+      </p>
+    </td>
+  </tr>
+</tbody></table>
+
+<table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0">
+  <tbody><tr>
+    <td style=3D"color: #0F2322; font-family: 'proxima-nova', Helvetica, Ar=
+ial, sans-serif !important;">
+     =20
+<p class=3D"text-16 lh-24 l-black lts-01" style=3D"mso-line-height-rule: ex=
+actly; Margin: 0; font-size: 16px; color: #0F2322; text-align: left; line-h=
+eight: 24px; letter-spacing: -0.1px; padding-bottom: 23px; padding: 0 !impo=
+rtant; margin: 0 !important; font-family: 'proxima-nova', Helvetica, Arial,=
+ sans-serif !important; min-width: auto !important;">
+  <small><b>Pourquoi je re=C3=A7ois cet email ?</b><br/>
+  Une alerte =C2=AB D=C3=A9penses sup=C3=A9rieures =C3=A0 =C2=BB est activ=
+=C3=A9e sur votre compte =C2=AB Budget mensuel  =C2=BB.<br/>
+  <a href=3D"https://click.sumeria.eu/e/c/eyJlbWFpbF9pZCI6ImRnU3hoUXdCQUtiZ=
+XhRT2wzc1VEQVp6WG9fbGNHWmdYeHlfTjNYclZjdz09IiwiaHJlZiI6Imh0dHBzOi8vZ28uc3Vt=
+ZXJpYS5ldS9hY2NvdW50ZGV0YWlscz9pZD0yNjc4MzQzOSIsImludGVybmFsIjoiYjE4NTBjZjc=
+wMWQ1YmIwMWE2ZGVjNTAzIiwibGlua19pZCI6NzV9/329251e9004478953ab9c9eb20435ba4f=
+c756737594985d4db7dd3572a4e6c5d" class=3D"l-black" style=3D"color: #0F2322;=
+ text-decoration: underline; font-family: 'proxima-nova', Helvetica, Arial,=
+ sans-serif !important;"><u>Cliquez ici depuis votre smartphone</u></a>, ou=
+ rendez-vous dans ce compte, pour d=C3=A9sactiver ou modifier cette alerte.=
+<br/>
+  <a href=3D"https://click.sumeria.eu/e/c/eyJlbWFpbF9pZCI6ImRnU3hoUXdCQUtiZ=
+XhRT2wzc1VEQVp6WG9fbGNHWmdYeHlfTjNYclZjdz09IiwiaHJlZiI6Imh0dHBzOi8vc3VwcG9y=
+dC5zdW1lcmlhLmV1L2wvZnIvYXJ0aWNsZS9zYWRvYmsxOWU1LWNvbmZpZ3VyZXItdW5lLWFsZXJ=
+0ZS1zdXItbGUtY29tcHRlIiwiaW50ZXJuYWwiOiJiMTg1MGNmNzAxZDViYjAxYTZkZWM1MDMiLC=
+JsaW5rX2lkIjoxNH0/6fecaa4c20653c25bcedd6b975b8d13b93bda85a3105a821e7a1e58a3=
+4aff5a2" class=3D"l-black" style=3D"color: #0F2322; text-decoration: underl=
+ine; font-family: 'proxima-nova', Helvetica, Arial, sans-serif !important;"=
+><u>Cliquez ici</u></a> pour en savoir plus sur les alertes.
+  </small>
+</p>
+
+    </td>
+  </tr>
+</tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+                <!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D /CONTENU =3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D -->
+
+                <!-- Spacing -->
+                <table role=3D"presentation" width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+                  <tbody><tr><td style=3D"color: #0F2322; height: 24px; lin=
+e-height: 24px; font-size: 0; font-family: 'proxima-nova', Helvetica, Arial=
+, sans-serif !important;" height=3D"24">=C2=A0</td></tr>
+                </tbody></table>
+
+                <!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D FOOTER SECTION =3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D -->
+                <table role=3D"presentation" width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+                  <tbody><tr>
+                    <td class=3D"mpx-40" style=3D"color: #0F2322; padding: =
+0 48px; font-family: 'proxima-nova', Helvetica, Arial, sans-serif !importan=
+t;">
+
+                     <!-- Spacer 24px -->
+                    <table role=3D"presentation" width=3D"100%" border=3D"0=
+" cellspacing=3D"0" cellpadding=3D"0">
+                        <tbody><tr><td style=3D"color: #0F2322; height: 24p=
+x; line-height: 24px; font-size: 0; font-family: 'proxima-nova', Helvetica,=
+ Arial, sans-serif !important;" height=3D"24">=C2=A0</td></tr>
+                    </tbody></table>
+                    =20
+                     <!-- S=C3=A9parateur au-dessus du footer -->
+                    <hr width=3D"100%" noshade=3D"" style=3D"border:0; heig=
+ht:1px; background-color:#C6C1BD; margin:0; padding:0;"/>
+
+                      <!-- Petit spacer 16px -->
+                      <table role=3D"presentation" width=3D"100%" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0">
+                        <tbody><tr>
+                          <td style=3D"color: #0F2322; height: 16px; line-h=
+eight: 16px; font-size: 0; font-family: 'proxima-nova', Helvetica, Arial, s=
+ans-serif !important;" height=3D"16">=C2=A0</td>
+                        </tr>
+                      </tbody></table>
+                     =20
+                      <!-- Footer -->
+                      <table role=3D"presentation" width=3D"100%" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0">
+                        <tbody><tr>
+                          <td style=3D"color: #0F2322; font-family: 'proxim=
+a-nova', Helvetica, Arial, sans-serif !important;">
+                           =20
+<table role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0" style=3D"margin-bottom: 71px;">
+  <tbody><tr>
+    <td class=3D"text-12 lh-15 c-dblue" style=3D"color: #0F2322; font-size:=
+ 12px; text-align: left; line-height: 15px; padding-bottom: 12px; font-fami=
+ly: 'proxima-nova', Helvetica, Arial, sans-serif !important; min-width: aut=
+o !important;" align=3D"left">
+      <p class=3D"text-12 lh-15 c-dblue" style=3D"mso-line-height-rule: exa=
+ctly; Margin: 0; color: #0F2322; font-size: 12px; text-align: left; line-he=
+ight: 15px; padding: 0 !important; margin: 0 !important; font-family: 'prox=
+ima-nova', Helvetica, Arial, sans-serif !important; min-width: auto !import=
+ant;">
+        <b>Une question ? Un probl=C3=A8me ?<br/></b>
+        La r=C3=A9ponse se trouve s=C3=BBrement dans notre <a href=3D"https=
+://click.sumeria.eu/e/c/eyJlbWFpbF9pZCI6ImRnU3hoUXdCQUtiZXhRT2wzc1VEQVp6WG9=
+fbGNHWmdYeHlfTjNYclZjdz09IiwiaHJlZiI6Imh0dHBzOi8vc3VwcG9ydC5zdW1lcmlhLmV1L2=
+wvZnIiLCJpbnRlcm5hbCI6ImIxODUwY2Y3MDFkNWJiMDFhNmRlYzUwMyIsImxpbmtfaWQiOjJ9/=
+a99a807a7e52e7f238b3a1b0a09657f4c8dff162919be506410f39a09485ca40" target=3D=
+"_blank" class=3D"l-dblue link" style=3D"color: #0F2322; text-decoration: u=
+nderline; font-family: 'proxima-nova', Helvetica, Arial, sans-serif !import=
+ant;">manuel d'utilisation</a>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td class=3D"text-12 lh-15 c-grey" style=3D"color: #5B6968; font-size: =
+12px; text-align: left; line-height: 15px; padding-bottom: 24px; font-famil=
+y: 'proxima-nova', Helvetica, Arial, sans-serif !important; min-width: auto=
+ !important;" align=3D"left">
+      <p class=3D"c-grey" style=3D"mso-line-height-rule: exactly; Margin: 0=
+; color: #5B6968; font-size: 8px; line-height: 15px; padding: 0 !important;=
+ margin: 0 !important; font-family: 'proxima-nova', Helvetica, Arial, sans-=
+serif !important;">
+        Vous recevez cet email suite =C3=A0 une action li=C3=A9e aux servic=
+es de paiement de l'application Sumeria (une marque de Lydia Solutions). Ce=
+t email n'est pas envoy=C3=A9 dans un but commercial. C'est la raison pour =
+laquelle il ne contient pas de lien pour se d=C3=A9sabonner. Vous recevez c=
+et email parce que vous avez un compte ouvert dans les livres de Lydia Solu=
+tions, m=C3=AAme si vous =C3=AAtes d=C3=A9sabonn=C3=A9 des emails commercia=
+ux.<br/><br/>
+        Le nom de domaine sumeria.eu appartient =C3=A0 Lydia Solutions, y c=
+ompris les adresses email avec le suffixe =C2=AB @sumeria.eu =C2=BB.<br/><b=
+r/>
+        LYDIA SOLUTIONS est agr=C3=A9=C3=A9e et supervis=C3=A9e par l'Autor=
+it=C3=A9 de Contr=C3=B4le Prudentiel et de R=C3=A9solution (=C2=AB ACPR =C2=
+=BB) en tant qu'=C3=A9tablissement de monnaie =C3=A9lectronique habilit=C3=
+=A9 =C3=A0 d=C3=A9livrer des services de paiements. Code banque (CIB) : 175=
+98. Agent prestataire de services de paiement de TINK (FI id 44059). Immatr=
+icul=C3=A9e aupr=C3=A8s de l'ORIAS sous le n=C2=B018007465.<br/><br/>
+        LYDIA SOLUTIONS, SAS au capital de 1.794.792=C2=A0=E2=82=AC - RCS P=
+aris 534 479 589 - TVA FR 67 534 479 589 - 14 avenue de l'Op=C3=A9ra, 75001=
+ Paris.
+      </p>
+    </td>
+  </tr>
+</tbody></table>
+
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+                <!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D /FOOTER SECTION =3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D -->
+
+              </td>
+            </tr>
+          </tbody></table>
+          <!-- /Conteneur principal -->
+        </td>
+      </tr>
+    </tbody></table>
+  </center>
+
+<img src=3D"https://click.sumeria.eu/e/o/eyJlbWFpbF9pZCI6ImRnU3hoUXdCQUtiZX=
+hRT2wzc1VEQVp6WG9fbGNHWmdYeHlfTjNYclZjdz09In0=3D" style=3D"height: 1px !imp=
+ortant; max-height: 1px !important; max-width: 1px !important; width: 1px !=
+important; display: none !important;" alt=3D""/></body></html>
+--d362a4f01c19f0007c5b014e8927391d79ea323f053f5f0b4bf2fbc9c9af--

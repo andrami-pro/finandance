@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integrations and Connections Control Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dedb2", // Bright Emerald
+                        "primary-dark": "#15bd8d",
+                        "stone-bg": "#fcfcfc", // Very light stone
+                        "stone-border": "#e5e7eb", // Subtle gray border
+                        "text-main": "#111816",
+                        "text-muted": "#61897e",
+                        "background-light": "#ffffff",
+                        "background-dark": "#10221d",
+                    },
+                    fontFamily: {
+                        "display": ['"Geist Mono"', "monospace"],
+                        "body": ['"Geist Mono"', "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.45rem",
+                        "sm": "0.25rem",
+                        "md": "0.45rem",
+                        "lg": "0.6rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary selection:text-black">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-64 flex-shrink-0 border-r border-stone-border bg-stone-bg flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-sm">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-text-main">WealthCollaborate</h1>
+<span class="text-[10px] uppercase tracking-wider text-text-muted font-medium">Nova V3</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">folder_shared</span>
+<span class="text-xs font-medium">Shared Projects</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md bg-white border border-stone-border px-3 py-2.5 shadow-sm transition-all hover:border-emerald-200" href="#">
+<span class="material-symbols-outlined text-emerald-600">hub</span>
+<span class="text-xs font-semibold text-text-main">Integrations</span>
+<span class="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-100 px-1 text-[9px] font-bold text-emerald-700">3</span>
+</a>
+<a class="group flex items-center gap-3 rounded-md px-3 py-2.5 text-text-muted transition-colors hover:bg-stone-100 hover:text-text-main" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-text-main">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-md border border-emerald-100 bg-emerald-50/50 p-3">
+<div class="flex items-center gap-2 text-emerald-800 mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Security</span>
+</div>
+<p class="text-[10px] text-emerald-700/80 leading-relaxed">Your session is encrypted and 2FA secured.</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-stone-border">
+<div class="relative h-8 w-8 overflow-hidden rounded-full border border-stone-200">
+<img alt="User avatar" class="h-full w-full object-cover" data-alt="Close up portrait of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9eu7_rOpnWcHeiUKB9ODrPSOsIWv_FBMAxfbfPw-b1Z9QRAuE5fQ7Gs490JeQUpM4v6fSgwwkijiU0x-ia-GRE1idaTSxvWOITglJ-Gdi8gIVZLb-s5jwBgdYi7mDdWQijWm50qKpduWnBa8uWwEAXo6oLLsm-W8NJVAPJ2N-JzreaW9FFNKEC6C-J8fblvSd-rUwrwp9-JbHZkKPRVz70aUjaM02_JwHVtPDtj7imv-eLbVGd3id8UPg8Ig_YceVeGWoYq5NBQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-text-main">Elena R.</span>
+<span class="text-[10px] text-text-muted">Pro Plan</span>
+</div>
+<button class="ml-auto text-text-muted hover:text-text-main">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light overflow-hidden">
+<header class="h-20 flex items-center justify-between px-8 border-b border-stone-border bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-2 text-text-main">
+<span class="text-xs text-text-muted hover:text-text-main cursor-pointer transition-colors">Dashboard</span>
+<span class="text-xs text-stone-300">/</span>
+<h1 class="text-lg font-bold tracking-tight">Integrations &amp; Connections</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-text-muted font-mono">Last global sync:</span>
+<span class="text-xs font-bold text-emerald-600 font-mono">5 mins ago</span>
+</div>
+<button class="relative text-text-muted hover:text-text-main transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+<div class="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-10">
+<img alt="Partner 1" class="h-full w-full object-cover" data-alt="Woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LJLbkb_0MdBYNmT7Smmd1dfJyFGJTHb_fIDvJ-DA5BipYCr-a3HpvTFPjij9upwlK8n8ZFPQyrn_-NwBMuseyITdHJuwK5zzllCjTl_-tJqa-gw6fmnYzOSkTFkC-ebDrPP24ye570hjoYs8n2OlA6KahJMCzjC14eswasekvrhvo2JnhzPkZkXEV9py1M9gtxJ9XksoTPtyf-CBk4RspH9j8rn2fNJF6ZSS8oSAqaKSGi3H0cAY8c-s0uxgIG178T_ONeI20Q"/>
+</div>
+<div class="h-9 w-9 rounded-full ring-2 ring-white overflow-hidden bg-stone-200 z-0">
+<img alt="Partner 2" class="h-full w-full object-cover" data-alt="Man portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8G5EfvhEG9KqmXebJBFoVSmUooalmSaaSgW7wYBs2mEQRVUANHRPtHAs4IhDNgatQN6vY1oqKZSrgxic63dMvCpO7dpKxAEYWXlPPg00toDdl0AhQ9pqzlQIlZBht7FVkcka9J4gXunB72VFyfDB73YVn82I4BdPmPCFokH_rcQcruvi1n2ATbDpG4oBDGXyW9Ak4sRgb4EFZ69PBdkGL6uwhdklDa952G7yMFkjrn7dQgELHf1zd9AMLz9bTZBCnP3zZiVdqw"/>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-text-main px-4 py-2 rounded-md font-bold text-xs transition-colors shadow-sm shadow-emerald-200">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add New Connection
+                    </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="mx-auto max-w-7xl flex flex-col gap-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-emerald-500">link</span>
+</div>
+<div class="flex justify-between items-start">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Active Connections</h3>
+<span class="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 ring-1 ring-inset ring-emerald-600/20 gap-1">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    All systems syncing
+                                </span>
+</div>
+<div class="text-4xl font-bold text-text-main font-mono">3</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-blue-500">account_tree</span>
+</div>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Detected Sources</h3>
+<div class="flex items-end justify-between">
+<div class="text-4xl font-bold text-text-main font-mono">8</div>
+<div class="text-[10px] text-text-muted text-right">
+                                    Wise Jars<br/>+ Crypto Wallets
+                                </div>
+</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col justify-between h-32 relative overflow-hidden group bg-stone-50/50">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-stone-600">shield</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600">security</span>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Security Protocol</h3>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-xs font-medium text-emerald-800">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                                    API Keys Encrypted
+                                </div>
+<div class="flex items-center gap-2 text-xs font-medium text-emerald-800">
+<span class="material-symbols-outlined text-[14px]">phonelink_lock</span>
+                                    2FA is Active
+                                </div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-sm font-bold text-text-main mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-text-muted">hub</span>
+                            Connected Providers
+                        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="h-10 w-10 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-sm shadow-sm">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6.3 3h11.4l-2.6 4.3h-4l-1.6 2.6h5.6l-2.6 4.3h-4l-4.1 6.8H4.6l4.1-6.8h5.6L19.7 3H6.3z"></path></svg>
+</div>
+<div class="flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded text-[10px] font-bold text-emerald-700 border border-emerald-100">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Connected
+                                    </div>
+</div>
+<div>
+<h3 class="font-bold text-text-main">Wise</h3>
+<p class="text-[10px] text-text-muted">Checking &amp; Savings</p>
+</div>
+<div class="bg-stone-50 rounded p-2 border border-stone-100">
+<div class="flex items-center gap-2 text-[10px] text-text-main font-medium mb-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check_circle</span>
+                                        Read-Only Access
+                                    </div>
+<div class="flex items-center gap-2 text-[10px] text-text-muted">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+                                        Found 3 active Jars
+                                    </div>
+</div>
+<button class="mt-auto w-full border border-stone-200 bg-white hover:bg-stone-50 text-text-main text-xs font-medium py-2 rounded-md transition-colors">
+                                    Manage Connection
+                                </button>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="h-10 w-10 rounded bg-[#5741d9] flex items-center justify-center text-white font-bold text-lg shadow-sm">K</div>
+<div class="flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded text-[10px] font-bold text-emerald-700 border border-emerald-100">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Connected
+                                    </div>
+</div>
+<div>
+<h3 class="font-bold text-text-main">Kraken</h3>
+<p class="text-[10px] text-text-muted">Crypto Exchange</p>
+</div>
+<div class="bg-stone-50 rounded p-2 border border-stone-100">
+<div class="flex items-center gap-2 text-[10px] text-text-main font-medium mb-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check_circle</span>
+                                        Read-Only Access
+                                    </div>
+<div class="flex items-center gap-2 text-[10px] text-text-muted">
+<span class="material-symbols-outlined text-[14px]">key</span>
+                                        API Key valid
+                                    </div>
+</div>
+<button class="mt-auto w-full border border-stone-200 bg-white hover:bg-stone-50 text-text-main text-xs font-medium py-2 rounded-md transition-colors">
+                                    Manage Connection
+                                </button>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="h-10 w-10 rounded bg-[#1c1c1c] flex items-center justify-center text-white font-bold text-lg shadow-sm border border-stone-600">L</div>
+<div class="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded text-[10px] font-bold text-blue-700 border border-blue-100">
+<span class="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                                        Tracking Active
+                                    </div>
+</div>
+<div>
+<h3 class="font-bold text-text-main">Ledger</h3>
+<p class="text-[10px] text-text-muted">Cold Storage</p>
+</div>
+<div class="bg-stone-50 rounded p-2 border border-stone-100">
+<div class="flex items-center gap-2 text-[10px] text-text-main font-medium mb-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">public</span>
+                                        Public Address Only
+                                    </div>
+<div class="flex items-center gap-2 text-[10px] text-text-muted">
+<span class="material-symbols-outlined text-[14px]">currency_bitcoin</span>
+                                        Monitoring 1 BTC addr
+                                    </div>
+</div>
+<button class="mt-auto w-full border border-stone-200 bg-white hover:bg-stone-50 text-text-main text-xs font-medium py-2 rounded-md transition-colors">
+                                    Edit Address
+                                </button>
+</div>
+<div class="rounded-md border border-stone-200 bg-stone-50 p-5 shadow-none flex flex-col gap-4 opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center justify-between">
+<div class="h-10 w-10 rounded bg-white border border-stone-200 flex items-center justify-center text-text-main font-bold text-lg shadow-sm">
+<span class="material-symbols-outlined">mountain_flag</span>
+</div>
+<div class="flex items-center gap-1 bg-stone-200 px-2 py-1 rounded text-[10px] font-bold text-stone-500 border border-stone-300">
+<span class="h-1.5 w-1.5 rounded-full bg-stone-400"></span>
+                                        Not Connected
+                                    </div>
+</div>
+<div>
+<h3 class="font-bold text-text-muted">Mt Pelerin</h3>
+<p class="text-[10px] text-text-muted">Fiat On/Off Ramp</p>
+</div>
+<div class="bg-white/50 rounded p-2 border border-stone-200 border-dashed h-full flex items-center justify-center">
+<p class="text-[10px] text-center text-text-muted leading-tight">Connect to track fiat-to-crypto DCA automatically</p>
+</div>
+<button class="mt-auto w-full border border-stone-300 bg-white hover:bg-stone-50 text-text-muted hover:text-text-main text-xs font-medium py-2 rounded-md transition-colors">
+                                    Connect API
+                                </button>
+</div>
+</div>
+</div>
+<div class="rounded-md border border-stone-border bg-white p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-text-muted">Available Funding Sources (Pockets/Jars)</h3>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-stone-100 rounded text-stone-400 hover:text-text-main transition-colors"><span class="material-symbols-outlined text-[18px]">filter_list</span></button>
+<button class="p-1 hover:bg-stone-100 rounded text-stone-400 hover:text-text-main transition-colors"><span class="material-symbols-outlined text-[18px]">more_horiz</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="text-[10px] uppercase text-text-muted font-medium border-b border-stone-100">
+<tr>
+<th class="pb-3 pl-2 font-medium">Source Name</th>
+<th class="pb-3 font-medium">Provider</th>
+<th class="pb-3 font-medium">Asset Type</th>
+<th class="pb-3 font-medium text-right">Balance</th>
+<th class="pb-3 pr-2 font-medium text-right">Assigned Project</th>
+</tr>
+</thead>
+<tbody class="text-xs font-mono">
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2 font-bold text-text-main">Emergency Fund Jar</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-[8px]">W</div>
+<span class="text-text-muted">Wise</span>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center rounded-md bg-stone-100 px-2 py-1 text-[10px] font-medium text-text-muted border border-stone-200">Fiat (EUR)</span>
+</td>
+<td class="py-3 text-right font-bold text-text-main">€12,450.00</td>
+<td class="py-3 pr-2 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 pl-2 pr-3 py-1 text-[10px] font-medium text-emerald-800 border border-emerald-100">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                                House Down Payment
+                                            </span>
+</td>
+</tr>
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2 font-bold text-text-main">HODL Stash</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded bg-[#1c1c1c] flex items-center justify-center text-white font-bold text-[8px]">L</div>
+<span class="text-text-muted">Ledger</span>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center rounded-md bg-orange-50 px-2 py-1 text-[10px] font-medium text-orange-700 border border-orange-100">BTC</span>
+</td>
+<td class="py-3 text-right font-bold text-text-main">0.452 BTC</td>
+<td class="py-3 pr-2 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 pl-2 pr-3 py-1 text-[10px] font-medium text-emerald-800 border border-emerald-100">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                                Retirement 2050
+                                            </span>
+</td>
+</tr>
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2 font-bold text-text-main">Trip Savings</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded bg-[#9fe870] flex items-center justify-center text-[#163300] font-bold text-[8px]">W</div>
+<span class="text-text-muted">Wise</span>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center rounded-md bg-stone-100 px-2 py-1 text-[10px] font-medium text-text-muted border border-stone-200">Fiat (USD)</span>
+</td>
+<td class="py-3 text-right font-bold text-text-main">$2,100.00</td>
+<td class="py-3 pr-2 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 pl-2 pr-3 py-1 text-[10px] font-medium text-emerald-800 border border-emerald-100">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                                Group Trip
+                                            </span>
+</td>
+</tr>
+<tr class="group hover:bg-stone-50 transition-colors border-b border-stone-50 last:border-0">
+<td class="py-3 pl-2 font-bold text-text-main">Trading Account</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded bg-[#5741d9] flex items-center justify-center text-white font-bold text-[8px]">K</div>
+<span class="text-text-muted">Kraken</span>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center rounded-md bg-stone-100 px-2 py-1 text-[10px] font-medium text-text-muted border border-stone-200">USDT</span>
+</td>
+<td class="py-3 text-right font-bold text-text-main">5,400.00 USDT</td>
+<td class="py-3 pr-2 text-right">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-stone-100 pl-2 pr-3 py-1 text-[10px] font-medium text-stone-500 border border-stone-200">
+<span class="h-1.5 w-1.5 rounded-full bg-stone-400"></span>
+                                                Unassigned
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

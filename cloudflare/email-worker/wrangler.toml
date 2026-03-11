@@ -1,0 +1,15 @@
+name = "finandance-email-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-01"
+
+[vars]
+# Override via `wrangler secret put BACKEND_URL` and `wrangler secret put WEBHOOK_SECRET`
+# These are defaults for development only
+BACKEND_URL = "http://localhost:8000"
+
+# Email routing trigger — receives all emails to *@ingest.andrami.pro
+[[email_routing.matchers]]
+type = "all"
+
+[[email_routing.handlers]]
+type = "worker"
